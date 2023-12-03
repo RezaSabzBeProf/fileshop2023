@@ -1,0 +1,47 @@
+﻿@using fileshop2023.DataLayer.entities.user
+@model IEnumerable<UserProduct>
+@{
+    ViewData["title"] = "محصولات من";
+}
+
+<main class="profile-user-page default">
+    <div class="container">
+        <div class="row">
+            <div class="profile-page col-xl-9 col-lg-8 col-md-12 order-2">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-12">
+                            <h1 class="title-tab-content">محصولات من</h1>
+                        </div>
+                        <div class="content-section default">
+                            <div class="row">
+                                @foreach(var item in Model)
+                                {
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="profile-recent-fav-row">
+                                            <a href="#" class="profile-recent-fav-col profile-recent-fav-col-thumb">
+                                                <img src="/img/@item.Product.ImageName">
+                                            </a>
+                                            <div class="profile-recent-fav-col profile-recent-fav-col-title">
+                                                <a href="#">
+                                                    <h4 class="profile-recent-fav-name">
+                                                        @item.Product.Name
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div class="col-12 text-left mb-3">
+                                                <a asp-action="DownloadFile" asp-route-id="@item.ProductId" class="view-product">دانلود محصول</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <partial name="_SideBar" />
+        </div>
+    </div>
+
+</main>

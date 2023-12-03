@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["title"] = "وضعیت پرداخت";
+}
+
+@if(ViewBag.success)
+{
+    <div class="alert alert-success">پرداخت با موفقیت انجام شد</div>
+}
+else
+{
+    <div class="alert alert-danger">پرداخت با شکست مواجه شد</div>
+}

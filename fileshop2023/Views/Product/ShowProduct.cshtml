@@ -1,0 +1,319 @@
+﻿@using fileshop2023.DataLayer.entities.product
+@model Product
+@{
+    ViewData["title"] = "";
+}
+<main class="single-product default">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav>
+                            <ul class="breadcrumb">
+                                <li>
+                                    <a href="/"><span>فروشگاه اینترنتی فارس کالا</span></a>
+                                </li>
+                                <li>
+                                    <a href="/Product/Products/@Model.ProductGroup.ProductGroupId"><span>@Model.ProductGroup.GroupName</span></a>
+                                </li>
+                                <li>
+                                    <a href="/Product/ShowProduct/@Model.ProductId"><span>@Model.Name</span></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <article class="product">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="product-gallery default">
+                                <div class="zoomWrapper" style="height: 411px; width: 411px;"><img class="zoom-img" id="img-product-zoom" src="/img/@Model.ImageName" data-zoom-image="/img/@Model.ImageName" width="411" style="position: absolute;"></div>
+
+                                        <div id="gallery_01f" style="width:500px;float:left;">
+                                            <ul class="gallery-items">
+                                                <li>
+                                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/img/@Model.ImageName" data-zoom-image="/img/@Model.ImageName">
+                                                        <img src="/img/@Model.ImageName" width="100"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <ul class="gallery-options">
+                                        <li>
+                                            <button class="add-favorites"><i class="fa fa-heart"></i></button>
+                                            <span class="tooltip-option">افزودن به علاقمندی</span>
+                                        </li>
+                                        <li>
+                                            <button data-toggle="modal" data-target="#myModal"><i class="fa fa-share-alt"></i></button>
+                                            <span class="tooltip-option">اشتراک گذاری</span>
+                                        </li>
+                                    </ul>
+                                    <!-- Modal Core -->
+                                    <div class="modal-share modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h4 class="modal-title" id="myModalLabel">اشتراک گذاری</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="form-share">
+                                                        <div class="form-share-title">اشتراک گذاری در شبکه های اجتماعی</div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <ul class="btn-group-share">
+                                                                    <li><a href="#" class="btn-share btn-share-twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                                                    <li><a href="#" class="btn-share btn-share-facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                                    <li><a href="#" class="btn-share btn-share-google-plus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-share-title">ارسال به ایمیل</div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <label class="ui-input ui-input-send-to-email">
+                                                                    <input class="ui-input-field" type="email" placeholder="آدرس ایمیل را وارد نمایید.">
+                                                            </label></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <button class="btn-primary">ارسال</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form class="form-share-url default">
+                                                        <div class="form-share-url-title">آدرس صفحه</div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <label class="ui-url">
+                                                                    <input class="ui-url-field" value="https://www.farslearn.com">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal Core -->
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="product-title default">
+                                        <h1>
+                                            @Model.Name
+                                            <span>دسته بندی: @Model.ProductGroup.GroupName</span></h1>
+                                    </div>
+    
+                                    <div class="price-product defualt">
+                                        <div class="price-value">
+                                            <span> @Model.Price </span>
+                                            <span class="price-currency">تومان</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-add default">
+                                        <div class="parent-btn">
+                                            <a asp-area="UserPanel" asp-controller="Order" asp-action="AddCart" asp-route-id="@Model.ProductId" class="dk-btn dk-btn-info">
+                                                خرید
+                                                <i class="now-ui-icons shopping_cart-simple"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 center-breakpoint">
+                                    <div class="product-params default">
+                                        <ul data-title="توضیحات کوتاه">
+                                            @Model.ShortDesc
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        <div class="col-12 default no-padding">
+                            <div class="product-tabs default">
+                                <div class="box-tabs default">
+                                    <ul class="nav" role="tablist">
+                                        <li class="box-tabs-tab">
+                                            <a class="active" data-toggle="tab" href="#desc" role="tab" aria-expanded="true">
+                                                <i class="now-ui-icons objects_umbrella-13"></i> توضیحات
+                                            </a>
+                                        </li>
+                                @*        <li class="box-tabs-tab">
+                                            <a data-toggle="tab" href="#comments" role="tab" aria-expanded="false">
+                                                <i class="now-ui-icons shopping_shop"></i> نظرات کاربران
+                                            </a>
+                                        </li>*@
+                                    </ul>
+                                    <div class="card-body default">
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="desc" role="tabpanel" aria-expanded="true">
+                                                <article>
+                                                 
+                                                   @Html.Raw(Model.Body)
+                                                </article>
+                                            </div>
+                                            @*<div class="tab-pane" id="comments" role="tabpanel" aria-expanded="false">*@
+                                              @*  <article>
+                                                    <h2 class="param-title">
+                                                        نظرات کاربران
+                                                        <span>۱۲۳ نظر</span>
+                                                    </h2>
+                                                    <div class="comments-area default">
+                                                        <ol class="comment-list">
+                                                            <!-- #comment-## -->
+                                                            <li>
+                                                                <div class="comment-body">
+                                                                    <div class="comment-author">
+                                                                        <img alt="" src="assets/img/default-avatar.png" class="avatar"><cite class="fn">حسن</cite>
+                                                                        <span class="says">گفت:</span> </div>
+
+                                                                    <div class="commentmetadata"><a href="#">
+                                                                            اسفند ۲۰, ۱۳۹۶ در ۹:۴۱ ب.ظ</a> </div>
+
+                                                                    <p>لورم ایپسوم متن ساختگی</p>
+
+                                                                    <div class="reply"><a class="comment-reply-link" href="#">پاسخ</a></div>
+                                                                </div>
+                                                            </li>
+                                                            <!-- #comment-## -->
+                                                            <li>
+                                                                <div class="comment-body">
+                                                                    <div class="comment-author">
+                                                                        <img alt="" src="assets/img/default-avatar.png" class="avatar"><cite class="fn">رضا</cite>
+                                                                        <span class="says">گفت:</span> </div>
+
+                                                                    <div class="commentmetadata"><a href="#">
+                                                                            اسفند ۲۰, ۱۳۹۶ در ۹:۴۲ ب.ظ</a> </div>
+
+                                                                    <p>
+                                                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                                                        صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                                                    </p>
+
+                                                                    <div class="reply"><a class="comment-reply-link" href="#">پاسخ</a></div>
+                                                                </div>
+                                                                <ol class="children">
+                                                                    <li>
+                                                                        <div class="comment-body">
+                                                                            <div class="comment-author">
+                                                                                <img alt="" src="assets/img/default-avatar.png" class="avatar"><cite class="fn">بهرامی راد</cite> <span class="says">گفت:</span> </div>
+
+                                                                            <div class="commentmetadata"><a href="#">
+                                                                                    اسفند ۲۰, ۱۳۹۶ در ۹:۴۷ ب.ظ</a>
+                                                                            </div>
+
+                                                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی
+                                                                                نامفهوم از صنعت چاپ و با استفاده از
+                                                                                طراحان گرافیک است.
+                                                                                چاپگرها و متون بلکه روزنامه و مجله در
+                                                                                ستون و سطرآنچنان که لازم است و برای
+                                                                                شرایط فعلی تکنولوژی
+                                                                                مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                                                                ابزارهای کاربردی می باشد.</p>
+
+                                                                            <div class="reply"><a class="comment-reply-link" href="#">پاسخ</a></div>
+                                                                        </div>
+                                                                        <ol class="children">
+                                                                            <li>
+                                                                                <div class="comment-body">
+                                                                                    <div class="comment-author">
+                                                                                        <img alt="" src="assets/img/default-avatar.png" class="avatar"> <cite class="fn">محمد</cite>
+                                                                                        <span class="says">گفت:</span>
+                                                                                    </div>
+
+                                                                                    <div class="commentmetadata">
+                                                                                        <a href="#">
+                                                                                            خرداد ۳۰, ۱۳۹۷ در ۸:۵۳
+                                                                                            ق.ظ</a> </div>
+
+                                                                                    <p>عالیه</p>
+
+                                                                                    <div class="reply"><a class="comment-reply-link" href="#">پاسخ</a></div>
+                                                                                </div>
+                                                                                <ol class="children">
+                                                                                    <li>
+                                                                                        <div class="comment-body">
+                                                                                            <div class="comment-author">
+                                                                                                <img alt="" src="assets/img/default-avatar.png" class="avatar">
+                                                                                                <cite class="fn">اشکان</cite>
+                                                                                                <span class="says">گفت:</span>
+                                                                                            </div>
+
+                                                                                            <div class="commentmetadata">
+                                                                                                <a href="#">
+                                                                                                    خرداد ۳۰, ۱۳۹۷ در
+                                                                                                    ۸:۵۳ ق.ظ</a> </div>
+
+                                                                                            <p>لورم ایپسوم متن ساختگی با
+                                                                                                تولید سادگی نامفهوم از
+                                                                                                صنعت چاپ و با استفاده از
+                                                                                                طراحان
+                                                                                                گرافیک است. چاپگرها و
+                                                                                                متون بلکه روزنامه و مجله
+                                                                                                در ستون و سطرآنچنان که
+                                                                                                لازم است و
+                                                                                                برای شرایط فعلی تکنولوژی
+                                                                                                مورد نیاز و کاربردهای
+                                                                                                متنوع با هدف بهبود
+                                                                                                ابزارهای
+                                                                                                کاربردی می باشد.</p>
+
+                                                                                            <div class="reply"><a class="comment-reply-link" href="#">پاسخ</a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <!-- #comment-## -->
+                                                                                </ol>
+                                                                                <!-- .children -->
+                                                                            </li>
+                                                                            <!-- #comment-## -->
+                                                                        </ol>
+                                                                        <!-- .children -->
+                                                                    </li>
+                                                                    <!-- #comment-## -->
+                                                                </ol>
+                                                                <!-- .children -->
+                                                            </li>
+                                                            <!-- #comment-## -->
+                                                            <li>
+                                                                <div class="comment-body">
+                                                                    <div class="comment-author">
+                                                                        <img alt="" src="assets/img/default-avatar.png" class="avatar"> <cite class="fn">جلال</cite>
+                                                                        <span class="says">گفت:</span> </div>
+
+                                                                    <div class="commentmetadata"><a href="#">
+                                                                            اسفند ۲۱, ۱۳۹۶ در ۱:۱۰ ب.ظ</a> </div>
+
+                                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                                                        صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                                                        چاپگرها و
+                                                                        متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                                                        لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                                                                        کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+                                                                        باشد.</p>
+
+                                                                    <div class="reply"><a class="comment-reply-link" href="">پاسخ</a></div>
+                                                                </div>
+                                                            </li>
+                                                            <!-- #comment-## -->
+                                                        </ol>
+                                                    </div>
+                                                </article>
+                                            </div>*@
+                                       
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>

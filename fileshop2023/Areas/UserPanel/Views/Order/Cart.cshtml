@@ -1,0 +1,87 @@
+﻿@using fileshop2023.DataLayer.order
+@model Order
+@{
+    ViewData["title"] = "سبد خرید";
+}
+
+
+<main class="cart-page default">
+    <div class="container">
+        <div class="row">
+            <div class="cart-page-content col-xl-9 col-lg-8 col-md-12 order-1">
+                <div class="cart-page-title">
+                    <h1>سبد خرید</h1>
+                </div>
+                <div class="table-responsive checkout-content default">
+                    <table class="table">
+                        <tbody>
+                            @if(ViewBag.error == "empty")
+                            {
+                                <div class="alert alert-warning">سبد خرید شما خالی می باشد</div>
+                            }
+                            else
+                            {
+                                @foreach (var item in Model.OrderDetails)
+                                {
+                                    <tr class="checkout-item">
+                                        <td>
+                                            <img src="@item.Product.ImageName" alt="">
+                                            <button class="checkout-btn-remove"></button>
+                                        </td>
+                                        <td>
+                                            <h3 class="checkout-title">
+                                                @item.Product.Name
+                                            </h3>
+                                        </td>
+                                        <td>@item.Amount تومان</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <aside class="cart-page-aside col-xl-3 col-lg-4 col-md-6 center-section order-2">
+                <div class="checkout-aside">
+                    <div class="checkout-summary">
+                        <div class="checkout-summary-main">
+                            <ul class="checkout-summary-summary">
+                                <li>@if(Model.OrderDetails != null)
+                                        {
+                                        <span>
+                                            مبلغ کل(@Model.OrderDetails.Count() کالا)
+                                        </span>
+                                        }
+                                        else
+                                        {
+                                        <span>
+                                            مبلغ کل(0 کالا)
+                                        </span>
+                                        }
+                                    <span>@Model.OrderSum تومان</span></li>
+                            </ul>
+                            <div class="checkout-summary-devider">
+                                <div></div>
+                            </div>
+                            <div class="checkout-summary-content">
+                                <div class="checkout-summary-price-title">مبلغ قابل پرداخت:</div>
+                                <div class="checkout-summary-price-value">
+                                    <span class="checkout-summary-price-value-amount">@Model.OrderSum</span>تومان
+                                </div>
+                                <a asp-action="StartPayment" class="selenium-next-step-shipping">
+                                    <div class="parent-btn">
+                                        <button class="dk-btn dk-btn-info">
+                                            پرداخت
+                                            <i class="now-ui-icons shopping_basket"></i>
+                                        </button>
+                                    </div>
+                                </a>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["title"] = "کد تایید را وارد کنید";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="main-content col-12 col-md-7 col-lg-5 mx-auto">
+            <div class="account-box">
+                <a href="#" class="logo">
+                    <img src="assets/img/logo.png" alt="">
+                </a>
+                <div class="account-box-title text-right">@ViewData["title"]</div>
+                <div class="account-box-content">
+                    <form asp-controller="user" asp-action="EnterActiveCode" method="post" class="form-account">
+                       
+                        <input type="hidden" value="@ViewBag.phone" name="phone"/>
+                        
+                        <div class="form-account-title"> کد تایید</div>
+                        <div class="form-account-row">
+                            <label class="input-label"><i class="now-ui-icons users_single-02"></i></label>
+                            <input class="input-field" name="activecode" type="number">
+                        </div>
+                    
+                        <div class="form-account-row form-account-submit">
+                            <div class="parent-btn">
+                                <button class="dk-btn dk-btn-info">
+                                   ورود
+                                    <i class="fa fa-sign-in"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

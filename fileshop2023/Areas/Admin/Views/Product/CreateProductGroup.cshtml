@@ -1,0 +1,30 @@
+﻿@using fileshop2023.DataLayer.entities.product
+@model ProductGroup
+
+@{
+    ViewData["title"] = " گروه بندی";
+}
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            گروه بندی محصولات
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form method="post" asp-action="CreateProductGroup" role="form">
+                        <input type="hidden" asp-for="ProductGroupId"/>
+                        <div class="form-group">
+                            <label>نام گروه بندی</label>
+                            <input asp-for="GroupName" class="form-control">
+                        </div>
+
+                        <button class="btn btn-success">انجام</button>
+                    </form>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
